@@ -20,7 +20,7 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
+    LoginComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

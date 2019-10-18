@@ -1,5 +1,11 @@
 # AngularChallenge
 
+
+Welcome to the Health Recovery Solution coding challenge. This is a basic login application using recent versiond of Angular and Typescript. Your challenge is to do the following:
+*Fix the compiling error before running
+*Add an edit user feature using the mock backend to edit the user's name. You can implement this however you see fit.
+*Add some tests throughout the application either creating new test files or using the pre-built test files.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 
 ## Development server
@@ -25,3 +31,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
