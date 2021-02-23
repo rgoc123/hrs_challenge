@@ -22,4 +22,10 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(`${this.apiUrl}/users/${id}`);
     }
+
+    edit(editedUser) {
+      console.log(editedUser)
+        // const { id } = body;
+        // return this.http.patch(`${this.apiUrl}/users/${id}`, body)
+    }
 }

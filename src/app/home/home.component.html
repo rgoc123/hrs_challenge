@@ -10,7 +10,7 @@
       [ngClass]="[user.username === currentUser.username ? 'input-show' : 'input-hide'] ">
       <input [(ngModel)]="user.firstName" placeholder="First Name" />
       <input [(ngModel)]="user.lastName" placeholder="Last Name" />
-      <a>Save</a>
+      <a (click)="editUser(currentUser)">Save</a>
     </div>
   </li>
 </ul>

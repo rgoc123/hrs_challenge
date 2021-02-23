@@ -31,6 +31,15 @@ export class HomeComponent implements OnInit {
         .subscribe(() => this.loadAllUsers());
   }
 
+  editUser(editedUser) {
+    const body = {
+      id: editedUser.id,
+      firstName: editedUser.firstName,
+      lastName: editedUser.lastName
+    }
+    this.userService.edit(editedUser)
+  }
+
   toggleEditDisplay() {
     this.editUserDisplay = this.editUserDisplay === 'input-hide'
       ? 'input-show'
