@@ -4,6 +4,11 @@
 <ul>
   <li *ngFor="let user of users">
     {{user.username}} ({{user.firstName}} {{user.lastName}})
+    - <a class="text-edit">Edit</a>
     - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    <div>
+      <input [(ngModel)]="user.firstName" placeholder="First Name" />
+      <input [(ngModel)]="user.firstName" placeholder="Last Name" />
+    </div>
   </li>
 </ul>
