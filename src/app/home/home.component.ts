@@ -12,6 +12,7 @@ import { UserService, AuthenticationService } from '../services';
 export class HomeComponent implements OnInit {
   currentUser: User;
   users = [];
+  editUserDisplay = 'input-hide';
 
   constructor(
       private authenticationService: AuthenticationService,
@@ -28,6 +29,12 @@ export class HomeComponent implements OnInit {
     this.userService.delete(id)
         .pipe(first())
         .subscribe(() => this.loadAllUsers());
+  }
+
+  toggleEditDisplay() {
+    this.editUserDisplay = this.editUserDisplay === 'input-hide'
+      ? 'input-show'
+      : 'input-hide'
   }
 
   private loadAllUsers() {

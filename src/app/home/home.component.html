@@ -4,11 +4,13 @@
 <ul>
   <li *ngFor="let user of users">
     {{user.username}} ({{user.firstName}} {{user.lastName}})
-    <a [ngClass]="[user.username === currentUser.username ? 'edit-show' : 'edit-hide']">Edit</a>
+    <a (click)="toggleEditDisplay()" [ngClass]="[user.username === currentUser.username ? 'edit-show' : 'edit-hide']">Edit</a>
     - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    <div [ngClass]="[user.username === currentUser.username ? 'input-show' : 'input-hide']">
+    <div class={{editUserDisplay}}
+      [ngClass]="[user.username === currentUser.username ? 'input-show' : 'input-hide'] ">
       <input [(ngModel)]="user.firstName" placeholder="First Name" />
       <input [(ngModel)]="user.lastName" placeholder="Last Name" />
+      <a>Save</a>
     </div>
   </li>
 </ul>
