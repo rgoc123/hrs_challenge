@@ -1,15 +1,24 @@
-.edit-show {
-  display: block;
+.user-row {
+  display: flex;
+  flex-direction: column;
 }
 
-.edit-hide {
-  display: none;
+.user-buttons {
+  display: flex;
 }
 
+.edit {
+  margin: 0 5px;
+  color: #117d67 !important;
+  cursor: pointer;
+}
+
+.edit-show,
 .input-show {
   display: block;
 }
 
+.edit-hide,
 .input-hide {
   display: none;
 }

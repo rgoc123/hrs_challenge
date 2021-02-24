@@ -2,10 +2,12 @@
 <p>You're logged in to your HRS App!!</p>
 <h3>All registered users:</h3>
 <ul>
-  <li *ngFor="let user of users">
-    {{user.username}} ({{user.firstName}} {{user.lastName}})
-    <a (click)="toggleEditDisplay()" [ngClass]="[user.username === currentUser.username ? 'edit-show' : 'edit-hide']">Edit</a>
-    - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+  <li *ngFor="let user of users" class="user-row">
+    <div class="user-buttons">
+      {{user.username}} ({{user.firstName}} {{user.lastName}})
+      <a (click)="toggleEditDisplay()" class="edit" [ngClass]="[user.username === currentUser.username ? 'edit-show' : 'edit-hide']">Edit</a>
+      - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </div>
     <div class={{editUserDisplay}}
       [ngClass]="[user.username === currentUser.username ? 'input-show' : 'input-hide'] ">
       <form (submit)="editUser()">
