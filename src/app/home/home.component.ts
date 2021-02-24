@@ -31,13 +31,18 @@ export class HomeComponent implements OnInit {
         .subscribe(() => this.loadAllUsers());
   }
 
-  editUser(editedUser) {
+  editUser(e) {
+    e.preventDefault();
+
+    const { currentUser, editedFirstName, editedLastName } = this
+
     const body = {
-      id: editedUser.id,
-      firstName: editedUser.firstName,
-      lastName: editedUser.lastName
+      id: currentUser.id,
+      firstName: editedFirstName || currentUser.firstName,
+      lastName: editedLastName || currentUser.lastName
     }
-    this.userService.edit(editedUser)
+
+    this.userService.edit(body)
   }
 
   toggleEditDisplay() {
