@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   users = [];
   editUserDisplay = 'input-hide';
+  editedFirstName = '';
+  editedLastName = '';
 
   constructor(
       private authenticationService: AuthenticationService,
@@ -37,7 +39,10 @@ export class HomeComponent implements OnInit {
     const body = {
       id: currentUser.id,
       firstName: editedFirstName || currentUser.firstName,
-      lastName: editedLastName || currentUser.lastName
+      lastName: editedLastName || currentUser.lastName,
+      username: currentUser.username,
+      password: currentUser.password,
+      token: currentUser.token
     }
 
     const response = this.userService.edit(body)

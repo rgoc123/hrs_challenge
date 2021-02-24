@@ -24,6 +24,6 @@ export class UserService {
     }
 
     edit(editedUser: User) {
-        return this.http.patch(`${this.apiUrl}/users/edit`, editedUser);
+        return this.http.patch<any>(`${this.apiUrl}/users/edit`, editedUser);
     }
 }
