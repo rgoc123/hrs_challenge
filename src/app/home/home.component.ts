@@ -46,7 +46,10 @@ export class HomeComponent implements OnInit {
           this.currentUser = user;
           return user;
       }))
-      .subscribe(() => this.loadAllUsers());
+      .subscribe(() => {
+        this.loadAllUsers()
+        this.toggleEditDisplay()
+      });
   }
 
   toggleEditDisplay() {
