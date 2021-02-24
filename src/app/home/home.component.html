@@ -8,7 +8,7 @@
     - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
     <div class={{editUserDisplay}}
       [ngClass]="[user.username === currentUser.username ? 'input-show' : 'input-hide'] ">
-      <form (submit)="editUser($event)">
+      <form (submit)="editUser()">
         <input name="firstName" [(ngModel)]="editedFirstName" placeholder={{user.firstName}} />
         <input name="lastName" [(ngModel)]="editedLastName" placeholder={{user.lastName}} />
         <button class="button" type="submit">Save</button>

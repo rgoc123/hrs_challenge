@@ -28,10 +28,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return getUsers();
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
                     return deleteUser();
+                case url.endsWith('/edit') && method === 'PATCH':
+                    return editUser();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
-            }    
+            }
         }
 
         // route functions
@@ -74,6 +76,27 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             users = users.filter(x => x.id !== idFromUrl());
             localStorage.setItem('users', JSON.stringify(users));
             return ok();
+        }
+
+        function editUser() {
+            if (!isLoggedIn()) return unauthorized();
+
+            let editedUser = body;
+
+            for (let i = 0; i < users.length; i++) {
+              const user = users[i];
+              if (user.id === editedUser.id) {
+                users[i].firstName = editedUser.firstName;
+                users[i].lastName = editedUser.lastName;
+
+                editedUser = users[i]
+                break;
+              }
+            }
+
+            localStorage.setItem('currentUser', JSON.stringify(editedUser));
+            localStorage.setItem('users', JSON.stringify(users));
+            return ok(editedUser);
         }
 
         // helper functions

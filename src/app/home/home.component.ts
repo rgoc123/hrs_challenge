@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
-
+import { map } from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { UserService, AuthenticationService } from '../services';
 
@@ -31,9 +31,7 @@ export class HomeComponent implements OnInit {
         .subscribe(() => this.loadAllUsers());
   }
 
-  editUser(e) {
-    e.preventDefault();
-
+  editUser() {
     const { currentUser, editedFirstName, editedLastName } = this
 
     const body = {
@@ -42,7 +40,13 @@ export class HomeComponent implements OnInit {
       lastName: editedLastName || currentUser.lastName
     }
 
-    this.userService.edit(body)
+    const response = this.userService.edit(body)
+      .pipe(map(user => {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          this.currentUser = user;
+          return user;
+      }))
+      .subscribe(() => this.loadAllUsers());
   }
 
   toggleEditDisplay() {
